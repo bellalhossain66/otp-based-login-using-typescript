@@ -1,0 +1,13 @@
+# Node dependencies
+node_modules/
+
+# Environment files
+.env
+.env.production.local
+
+# Logs
+logs
+*.log
+
+# Tmp Lang
+.tmp_lang

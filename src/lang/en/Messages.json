@@ -1,0 +1,26 @@
+{
+  "account": {
+    "create": "Successfully account created.",
+    "update": "Successfully account updated.",
+    "delete": "Successfully account deleted."
+  },
+  "not_found": "Not found",
+  "coupon_not_found": "Coupon not found",
+  "file_not_found": "File not found",
+  "communication_not_found": "Communication not found!",
+  "video_not_found": "Video not found.",
+  "course_completed": "Course successfully completed.",
+  "file_not_found_or_uploaded": "We're sorry, but it seems that the file has either been deleted or hasn't been uploaded yet. If you believe this is an error or if you need further assistance, please don't hesitate to contact our support team.",
+  "access_denied_purchase_file": "Access denied. To access the valuable content, please purchase the file first. Your download will be available once the transaction is completed.",
+  "payment": {
+    "create": "Payment successfully created",
+    "already_complete": "Payment for this order is already complete",
+    "url_not_generated": "Payment url does not generate"
+  },
+  "message_sent_successfully": "Message sent succesfully",
+  "coupon_code_exceeded": "Coupon Code Limit Exceeded",
+  "coupon_code_invalid": "Coupon Code is not valid for this course!",
+  "course_already_purchased": "You have already purchased this course!",
+  "video_completion_message": "Please complete the video to mark as finished!",
+  "provide_right_parameter": "Please provide the right parameter!"
+}
