@@ -47,7 +47,7 @@ i18n.configure({
   updateFiles: false,
   register: global,
   api: {
-    '__': 'lang',
+    '__': '__',
     '__n': 'langN',
   },
 });

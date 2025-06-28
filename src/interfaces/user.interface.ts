@@ -15,4 +15,9 @@ export default interface User {
     ip_address?: string;
     popup_showing_date?: Date | null;
     can_podcast?: number;
+    security_stamp: string;
+    con_currency_stamp: string;
+    two_factor_enabled: number;
+    look_out_enabled: number;
+    access_failed_count: number;
 }

@@ -8,7 +8,13 @@ import {
 } from 'sequelize';
 import sequelize from '../config/db.config';
 
+interface Client {
+    phone_number: string;
+    roles: { name: string }[];
+}
+
 interface ClientOrderAttributes {
+    client?: Client;
     id: number;
     number?: string;
     client_order_status?: number;
@@ -68,6 +74,7 @@ type ClientOrderCreationAttributes = Optional<
 class ClientOrder
     extends Model<InferAttributes<ClientOrder>, InferCreationAttributes<ClientOrder>>
     implements ClientOrderAttributes {
+    declare client?: Client;
     declare id: CreationOptional<number>;
     declare number?: string;
     declare client_order_status?: number;
