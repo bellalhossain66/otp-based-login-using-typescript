@@ -16,7 +16,7 @@ app.use('/api/v2', accountRoutes);
 
 if (process.env.SERVER_TYPE !== 'lambda') {
     sequelizeDB.sync().then(() => {
-        const port = Number(process.env.PORT) || 3333;
+        const port = Number(process.env.APP_PORT) || 3333;
         app.listen(port, () => {
             console.log(`App running on port %s. Visit http://localhost:${port}/ in your browser.`);
         });

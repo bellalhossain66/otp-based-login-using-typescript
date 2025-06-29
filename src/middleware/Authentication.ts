@@ -6,6 +6,7 @@ import i18n from '../config/i18n.config';
 declare module 'express' {
     interface Request {
         loggedUserId?: number | string;
+        loggedUser?: any;
     }
 }
 
@@ -65,6 +66,7 @@ class Authentication {
         try {
             const decoded = jwt.verify(token, appConst.jwt.jwt_secret) as JwtPayload;
             req.loggedUserId = decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid"];
+            req.loggedUser = decoded;
             next();
         } catch (err: any) {
             console.error('JWT verification failed:', err.message);

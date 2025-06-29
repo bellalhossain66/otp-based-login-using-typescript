@@ -284,6 +284,12 @@ class AccountRepository {
             transaction,
         });
     }
+
+    public GetAllCountriesInfo = async (): Promise<CountryType[]> => {
+        return await Country.findAll({
+            order: [['name', 'ASC']]
+        });
+    }
 }
 
 export default new AccountRepository();

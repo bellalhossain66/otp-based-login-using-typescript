@@ -11,7 +11,7 @@ import MobileCountiresResource from '../resources/clientmobilecountries.resource
 import { GetPlatformFromUserAgent } from '../utils/device';
 import { v4 as uuidv4 } from 'uuid';
 import { createQataratQueue } from '../queue/queue';
-
+import jwt from 'jsonwebtoken';
 
 
 export const SendWhatsAppOtp = async (req: Request, res: Response): Promise<void> => {
@@ -347,3 +347,37 @@ export const AddUserDeviceToken = async (req: Request, res: Response): Promise<v
         return;
     }
 }
+
+export const GetAllCountriesInfo = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const countries = await AccountRepo.GetAllCountriesInfo();
+
+        res.json({ countries });
+        return;
+    } catch (error) {
+        console.error('Error in GetAllCountriesInfo:', error);
+        res.status(500).json({ message: 'Internal server error' });
+        return;
+    }
+};
+
+export const GetRefreshToken = async (req: Request, res: Response): Promise<void> => {
+
+    try {
+        const decoded: any = req.loggedUser;
+        const userId = decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid"];
+        const name = decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
+        const role = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+        const phone = decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
+
+        const newAccessToken = GenerateRefreshToken(userId, name, phone, role);
+
+        res.status(200).json({ refreshToken: newAccessToken });
+        return;
+
+    } catch (err: any) {
+        console.error('Refresh token error:', err.message);
+        res.status(403).json({ message: 'Invalid refresh token' });
+        return;
+    }
+};
